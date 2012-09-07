@@ -1,6 +1,6 @@
 Name:           chromaprint-tools
-Version:        0.6
-Release:        5%{?dist}
+Version:        0.7
+Release:        1%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 Group:          Applications/Multimedia
 License:        LGPLv2+
@@ -18,8 +18,8 @@ Chromaprint library is the core component of the AcoustID project. It's a
 client-side library that implements a custom algorithm for extracting 
 fingerprints from raw audio sources.
 
-This is a set of Chromaprint tools related to acoustic fingerprinting, 
-featuring fpcalc, an standalone AcoustID tool used by Picard.
+This is a set of Chromaprint tools related to acoustic fingerprinting 
+featuring fpcalc an standalone AcoustID tool used by Picard.
 
 %prep
 %setup -q -n chromaprint-%{version}
@@ -43,6 +43,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Fri Sep 7 2012 Ismael Olea <ismael@olea.org> - 0.7-1  
+- update to 0.7
+
 * Wed May 9 2012 Ismael Olea <ismael@olea.org> - 0.6-5
 - bump
 
