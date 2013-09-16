@@ -1,11 +1,11 @@
 Name:           chromaprint-tools
-Version:        0.7
-Release:        5%{?dist}
+Version:        1.0
+Release:        1%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 Group:          Applications/Multimedia
 License:        LGPLv2+
 URL:            http://www.acoustid.org/chromaprint/
-Source:         https://github.com/downloads/lalinsky/chromaprint/chromaprint-%{version}.tar.gz
+Source:         https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-%{version}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  fftw-devel >= 3
@@ -43,6 +43,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Mon Sep 16 2013 Ismael Olea <ismael@olea.org> - 1.0-1
+- update to 1.0
+
 * Sun May 26 2013 Nicolas Chauvet <kwizart@gmail.com> - 0.7-5
 - Rebuilt for x264/FFmpeg
 
