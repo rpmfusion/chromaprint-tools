@@ -1,6 +1,6 @@
 Name:           chromaprint-tools
 Version:        1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 Group:          Applications/Multimedia
 License:        LGPLv2+
@@ -43,6 +43,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Mon Sep 30 2013 Nicolas Chauvet <kwizart@gmail.com> - 1.0-2
+- Rebuilt
+
 * Mon Sep 16 2013 Ismael Olea <ismael@olea.org> - 1.0-1
 - update to 1.0
 
