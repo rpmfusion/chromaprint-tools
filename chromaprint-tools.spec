@@ -1,5 +1,5 @@
 Name:           chromaprint-tools
-Version:        1.1
+Version:        1.2
 Release:        1%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 Group:          Applications/Multimedia
@@ -12,6 +12,9 @@ BuildRequires:  fftw-devel >= 3
 
 # examples requires ffmpeg
 BuildRequires:  ffmpeg-devel
+
+Obsoletes: picard-freeworld < 1.2
+Provides: picard-freeworld = 1.2
 
 %description
 Chromaprint library is the core component of the AcoustID project. It's a 
@@ -39,10 +42,16 @@ rm -f %{buildroot}%{_libdir}/lib*.la
 rm -f %{buildroot}%{_libdir}/lib*.so*
 
 %files
-%doc COPYING.txt NEWS.txt README.txt
+%doc NEWS.txt README.md
+%license COPYING.txt
 %{_bindir}/fpcalc
 
 %changelog
+* Tue Feb 23 2016 Sérgio Basto <sergio@serjux.com> - 1.2-1
+- Update to 1.2
+- Fix rfbz #2746
+- Add license tag.
+
 * Tue Mar 17 2015 Ismael Olea <ismael@olea.org> - 1.1-1   
 - update to 1.1
 - CHANGES.txt file removed in upstream
@@ -102,7 +111,7 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 - update to 0.6
 - spec cleaning
 
-* Thu Nov 18 2011 Ismael Olea <ismael@olea.org> - 0.5-2
+* Fri Nov 18 2011 Ismael Olea <ismael@olea.org> - 0.5-2
 - first version for RPM-Fusion
 - renaming into chromaprint-tools
 
