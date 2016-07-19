@@ -1,11 +1,12 @@
 Name:           chromaprint-tools
 Version:        1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 Group:          Applications/Multimedia
 License:        LGPLv2+
 URL:            http://www.acoustid.org/chromaprint/
 Source:         https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-%{version}.tar.gz
+Patch0:         ffmpeg.patch
 
 BuildRequires:  cmake
 BuildRequires:  fftw-devel >= 3
@@ -26,6 +27,7 @@ featuring fpcalc an standalone AcoustID tool used by Picard.
 
 %prep
 %setup -q -n chromaprint-%{version}
+%patch0 -p1 -b .ffmpeg
 
 
 %build
@@ -47,6 +49,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Tue Jul 19 2016 Leigh Scott <leigh123linux@googlemail.com> - 1.2-2
+- patch for ffmpeg-3
+
 * Tue Feb 23 2016 Sérgio Basto <sergio@serjux.com> - 1.2-1
 - Update to 1.2
 - Fix rfbz #2746
