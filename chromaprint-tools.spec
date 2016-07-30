@@ -1,6 +1,6 @@
 Name:           chromaprint-tools
 Version:        1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 Group:          Applications/Multimedia
 License:        LGPLv2+
@@ -49,6 +49,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Sat Jul 30 2016 Julian Sikorski <belegdol@fedoraproject.org> - 1.2-3
+- Rebuilt for ffmpeg-3.1.1
+
 * Tue Jul 19 2016 Leigh Scott <leigh123linux@googlemail.com> - 1.2-2
 - patch for ffmpeg-3
 
