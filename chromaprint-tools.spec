@@ -1,12 +1,11 @@
 Name:           chromaprint-tools
-Version:        1.2
-Release:        7%{?dist}
+Version:        1.4.2
+Release:        1%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 Group:          Applications/Multimedia
-License:        LGPLv2+
-URL:            http://www.acoustid.org/chromaprint/
-Source:         https://bitbucket.org/acoustid/chromaprint/downloads/chromaprint-%{version}.tar.gz
-Patch0:         ffmpeg.patch
+License:        GPLv2+
+URL:            http://www.acoustid.org/chromaprint
+Source:         https://github.com/acoustid/chromaprint/releases/download/v%{version}/chromaprint-%{version}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  fftw-devel >= 3
@@ -25,13 +24,14 @@ fingerprints from raw audio sources.
 This is a set of Chromaprint tools related to acoustic fingerprinting 
 featuring fpcalc an standalone AcoustID tool used by Picard.
 
+License for binaries is GPLv2+ but source code is MIT + LGPLv2+
+
 %prep
 %setup -q -n chromaprint-%{version}
-%patch0 -p1 -b .ffmpeg
 
 
 %build
-%cmake -DBUILD_EXAMPLES=on -DBUILD_TESTS=off
+%cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON
 make %{?_smp_mflags}
 
 %install
@@ -45,10 +45,17 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 
 %files
 %doc NEWS.txt README.md
-%license COPYING.txt
+%license LICENSE.md
 %{_bindir}/fpcalc
 
 %changelog
+* Sun Feb 04 2018 Sérgio Basto <sergio@serjux.com> - 1.4.2-1
+- Sync with Fedora proper
+- Upstream URL changed to github
+- Updating to 1.4.2
+- Renamed LICENSE.md
+- Binary licenses should be GPLv2+ because linking with fftw (which uses GPLv2+)
+
 * Thu Jan 18 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.2-7
 - Rebuilt for ffmpeg-3.5 git
 
