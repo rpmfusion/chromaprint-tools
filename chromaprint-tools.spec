@@ -1,13 +1,13 @@
 Name:           chromaprint-tools
-Version:        1.4.2
-Release:        5%{?dist}
+Version:        1.4.3
+Release:        1%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
-Group:          Applications/Multimedia
 License:        GPLv2+
 URL:            http://www.acoustid.org/chromaprint
 Source:         https://github.com/acoustid/chromaprint/releases/download/v%{version}/chromaprint-%{version}.tar.gz
 
-BuildRequires:  cmake
+BuildRequires:  cmake3
+BuildRequires:  gcc-c++
 BuildRequires:  fftw-devel >= 3
 
 # examples requires ffmpeg
@@ -27,15 +27,15 @@ featuring fpcalc an standalone AcoustID tool used by Picard.
 License for binaries is GPLv2+ but source code is MIT + LGPLv2+
 
 %prep
-%setup -q -n chromaprint-%{version}
+%setup -q -n chromaprint-v%{version}
 
 
 %build
-%cmake -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON
-make %{?_smp_mflags}
+%cmake3 -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 
 # cleaning files managed in the chromaprint main package
 rm -f %{buildroot}%{_includedir}/chromaprint.h
@@ -49,6 +49,12 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Tue Oct 30 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.4.3-1
+- Update to 1.4.3
+- Remove Group tag
+- Use make macros
+- Add BuildRequires gcc-c++
+
 * Thu Jul 26 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.4.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
@@ -141,7 +147,7 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 - Rebuilt for x264/FFmpeg
 
 * Sat Jan 14 2012 Ismael Olea <ismael@olea.org> - 0.6-3
-- using %cmake macro
+- using cmake macro
 
 * Wed Jan 4 2012 Ismael Olea <ismael@olea.org> - 0.6-2
 - minor spec cleaning
