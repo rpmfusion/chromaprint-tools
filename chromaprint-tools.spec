@@ -1,6 +1,6 @@
 Name:           chromaprint-tools
 Version:        1.4.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 License:        GPLv2+
 URL:            http://www.acoustid.org/chromaprint
@@ -49,6 +49,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Sat Feb 22 2020 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 1.4.3-5
+- Rebuild for ffmpeg-4.3 git
+
 * Tue Feb 04 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.4.3-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
