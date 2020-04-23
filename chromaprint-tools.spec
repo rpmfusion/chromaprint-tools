@@ -1,6 +1,6 @@
 Name:           chromaprint-tools
-Version:        1.4.3
-Release:        5%{?dist}
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 License:        GPLv2+
 URL:            http://www.acoustid.org/chromaprint
@@ -9,6 +9,7 @@ Source:         https://github.com/acoustid/chromaprint/releases/download/v%{ver
 BuildRequires:  cmake3
 BuildRequires:  gcc-c++
 BuildRequires:  fftw-devel >= 3
+BuildRequires:  ninja-build
 
 # examples requires ffmpeg
 BuildRequires:  ffmpeg-devel
@@ -27,15 +28,21 @@ featuring fpcalc an standalone AcoustID tool used by Picard.
 License for binaries is GPLv2+ but source code is MIT + LGPLv2+
 
 %prep
-%setup -q -n chromaprint-v%{version}
+%autosetup -n chromaprint-v%{version}
 
 
 %build
-%cmake3 -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF -DCMAKE_BUILD_TYPE=Release -DBUILD_TOOLS=ON
-%make_build
+mkdir -p build
+pushd build
+%cmake3 -GNinja \
+ -DBUILD_TESTS=OFF \
+ -DCMAKE_BUILD_TYPE=Release \
+ -DBUILD_TOOLS=ON ..
+%ninja_build
+popd
 
 %install
-%make_install
+%ninja_install -C build
 
 # cleaning files managed in the chromaprint main package
 rm -f %{buildroot}%{_includedir}/chromaprint.h
@@ -49,6 +56,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Thu Apr 23 2020 Leigh Scott <leigh123linux@gmail.com> - 1.5.0-1
+- Update to 1.5.0
+
 * Sat Feb 22 2020 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 1.4.3-5
 - Rebuild for ffmpeg-4.3 git
 
