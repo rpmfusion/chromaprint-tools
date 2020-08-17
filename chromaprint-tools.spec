@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 Name:           chromaprint-tools
 Version:        1.5.0
 Release:        2%{?dist}
@@ -32,17 +34,14 @@ License for binaries is GPLv2+ but source code is MIT + LGPLv2+
 
 
 %build
-mkdir -p build
-pushd build
 %cmake3 -GNinja \
  -DBUILD_TESTS=OFF \
  -DCMAKE_BUILD_TYPE=Release \
- -DBUILD_TOOLS=ON ..
-%ninja_build
-popd
+ -DBUILD_TOOLS=ON
+%cmake3_build
 
 %install
-%ninja_install -C build
+%cmake3_install
 
 # cleaning files managed in the chromaprint main package
 rm -f %{buildroot}%{_includedir}/chromaprint.h
