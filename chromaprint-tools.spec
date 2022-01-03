@@ -1,8 +1,8 @@
 %undefine __cmake_in_source_build
 
 Name:           chromaprint-tools
-Version:        1.5.0
-Release:        6%{?dist}
+Version:        1.5.1
+Release:        1%{?dist}
 Summary:        Chromaprint audio fingerprinting tools
 License:        GPLv2+
 URL:            http://www.acoustid.org/chromaprint
@@ -30,7 +30,7 @@ featuring fpcalc an standalone AcoustID tool used by Picard.
 License for binaries is GPLv2+ but source code is MIT + LGPLv2+
 
 %prep
-%autosetup -n chromaprint-v%{version}
+%autosetup -n chromaprint-%{version}
 
 
 %build
@@ -55,6 +55,9 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 %{_bindir}/fpcalc
 
 %changelog
+* Mon Jan 03 2022 Sérgio Basto <sergio@serjux.com> - 1.5.1-1
+- Update chromaprint-tools to 1.5.1
+
 * Thu Nov 11 2021 Leigh Scott <leigh123linux@gmail.com> - 1.5.0-6
 - Rebuilt for new ffmpeg snapshot
 
