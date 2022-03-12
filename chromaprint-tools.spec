@@ -47,6 +47,18 @@ rm -f %{buildroot}%{_libdir}/lib*.so*
 - update to 1.1
 - CHANGES.txt file removed in upstream
 
+* Sun Oct 19 2014 Sérgio Basto <sergio@serjux.com> - 1.0-6
+- Rebuilt for FFmpeg 2.4.3
+
+* Fri Sep 26 2014 Nicolas Chauvet <kwizart@gmail.com> - 1.0-5
+- Rebuilt for FFmpeg 2.4.x
+
+* Thu Aug 07 2014 Sérgio Basto <sergio@serjux.com> - 1.0-4
+- Rebuilt for ffmpeg-2.3
+
+* Sat Mar 29 2014 Sérgio Basto <sergio@serjux.com> - 1.0-3
+- Rebuilt for ffmpeg-2.2
+
 * Mon Sep 30 2013 Nicolas Chauvet <kwizart@gmail.com> - 1.0-2
 - Rebuilt
 
